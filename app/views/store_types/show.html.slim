@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @store_type.name
+p
+  strong Description:
+  = @store_type.description
+
+= link_to 'Edit', edit_store_type_path(@store_type)
+'  |
+= link_to 'Back', store_types_path
