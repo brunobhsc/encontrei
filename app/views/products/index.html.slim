@@ -1,4 +1,26 @@
-h1 Listing products
+css:
+  .btn-pesquisar {
+    width: 160px;
+  }
+
+
+.page-header
+  h1 Encontrei!
+
+  h3 Pra você que gosta de tatear o que quer comprar!
+
+.panel.panel-default
+  .panel-body
+    h4.text-center Digite aqui o que procura:
+
+    = search_form_for @ransack, url: products_path do |f|
+      .row
+        .col-md-10[style="padding-right: 0px;"]
+          .form-group
+            = f.text_field :name_or_description_cont_any, class: "form form-control"
+        .col-md-2
+          .form-group
+            = f.button "Pesquisar", type: 'submit', class: 'btn btn-info btn-pesquisar'
 
 table
   thead

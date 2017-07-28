@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @ransack = Product.all.ransack(params[:q])
+    @products = @ransack.result
   end
 
   # GET /products/1
