@@ -5,9 +5,9 @@ css:
 
 
 .page-header
-  h1 Encontrei!
+  h1.text-center Encontrei!
 
-  h3 Pra você que gosta de tatear o que quer comprar!
+  h3.text-center Encontre a loja física mais perto de você.
 
 .panel.panel-default
   .panel-body
@@ -22,13 +22,14 @@ css:
           .form-group
             = f.button "Pesquisar", type: 'submit', class: 'btn btn-info btn-pesquisar'
 
-table
+
+table.table.table-striped[id="result-table"]
   thead
     tr
-      th Name
-      th Description
-      th Quantity
-      th Category
+      th Nome
+      th Descrição
+      th Quantidade
+      th Categoria
       th
       th
       th
@@ -38,12 +39,17 @@ table
       tr
         td = product.name
         td = product.description
-        td = product.quantity
-        td = product.category
+        td = product&.quantity
         td = link_to 'Show', product
         td = link_to 'Edit', edit_product_path(product)
         td = link_to 'Destroy', product, data: { confirm: 'Are you sure?' }, method: :delete
 
-br
+/ = link_to 'New Product', new_product_path
 
-= link_to 'New Product', new_product_path
+javascript:
+  $("#result-table").hide();
+
+  $(".btn-pesquisar").click(function(){
+    $("#result-table").show();
+    event.preventDefault();    
+  })
