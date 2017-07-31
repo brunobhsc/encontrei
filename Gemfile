@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 #Views
 gem 'slim'
 gem 'slim-rails'
+gem 'sqlite3'
 
 # Utilities, uploads, conversions
 gem 'ransack', github: 'activerecord-hackery/ransack'
@@ -48,7 +49,6 @@ end
 
 group :development do
   gem 'pry-rails'
-  gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
