@@ -39,6 +39,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_girl'
@@ -48,7 +49,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'pry-rails'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
