@@ -30,10 +30,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'gmaps4rails'
 #Views
 gem 'slim'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'bootstrap-generators'
 
 # Utilities, uploads, conversions
 gem 'ransack', github: 'activerecord-hackery/ransack'
