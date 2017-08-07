@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 #Views
 gem 'slim'
 gem 'slim-rails'
+gem 'html2slim'
 
 # Utilities, uploads, conversions
 gem 'ransack', github: 'activerecord-hackery/ransack'

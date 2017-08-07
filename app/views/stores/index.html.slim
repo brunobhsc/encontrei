@@ -1,0 +1,47 @@
+p#notice
+  = notice
+h1
+  | Lojas
+table.table
+  thead
+    tr
+      th
+        | Name
+      /th
+        | Adress
+      th
+        | Phone
+      th
+        | Email
+      th
+        | Site
+      /th
+        | Tipo
+      /th
+        | Customer
+      th[colspan="3"]
+  tbody
+    - @stores.each do |store|
+      tr
+        td
+          = store.name
+        /td
+          = store.adress
+        td
+          = store.phone
+        td
+          = store.email
+        td
+          = store.site
+        /td
+          = store.tipo
+        /td
+          = store.customer
+        td
+          = link_to 'Show', store
+        td
+          = link_to 'Edit', edit_store_path(store)
+        td
+          = link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Store', new_store_path

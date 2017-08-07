@@ -1,0 +1,33 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @store.name
+/p
+  strong
+    | Adress:
+  = @store.adress
+p
+  strong
+    | Phone:
+  = @store.phone
+p
+  strong
+    | Email:
+  = @store.email
+p
+  strong
+    | Site:
+  = @store.site
+/p
+  strong
+    | Tipo:
+  = @store.tipo
+/p
+  strong
+    | Customer:
+  = @store.customer
+= link_to 'Edit', edit_store_path(@store)
+|  | 
+= link_to 'Back', stores_path

@@ -7,7 +7,7 @@ css:
 .page-header
   h1.text-center Encontrei!
 
-  h3.text-center Encontre a loja física mais perto de você.
+  h3.text-center Encontre aqui a loja física mais perto de você.
 
 .panel.panel-default
   .panel-body
@@ -28,8 +28,8 @@ table.table.table-striped[id="result-table"]
     tr
       th Nome
       th Descrição
-      th Quantidade
-      th Categoria
+      /th Quantidade
+      / th Categoria
       th
       th
       th
@@ -40,17 +40,17 @@ table.table.table-striped[id="result-table"]
         td = product.name
         td = product.description
         td = product&.quantity
-        td | TODO
+        / td | TODO
         td = link_to 'Show', product
         td = link_to 'Edit', edit_product_path(product)
         td = link_to 'Destroy', product, data: { confirm: 'Are you sure?' }, method: :delete
 
 / = link_to 'New Product', new_product_path
 
-javascript:
-  $("#result-table").hide();
+// javascript:
+//   $("#result-table").hide();
 
-  $(".btn-pesquisar").click(function(){
-    $("#result-table").show();
-    event.preventDefault();    
-  })
+//   $(".btn-pesquisar").click(function(){
+//     $("#result-table").show();
+//     event.preventDefault();    
+//   })
