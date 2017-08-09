@@ -7,8 +7,12 @@ table.table
     tr
       th
         | Name
-      /th
-        | Adress
+      th
+        | address
+      th
+        | Latitude
+      th
+        | Longitude
       th
         | Phone
       th
@@ -25,8 +29,12 @@ table.table
       tr
         td
           = store.name
-        /td
-          = store.adress
+        td
+          = store.address
+        td
+          = store.latitude
+        td
+          = store.longitude
         td
           = store.phone
         td
@@ -45,3 +53,14 @@ table.table
           = link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' }
 br
 = link_to 'New Store', new_store_path
+
+div[style='width: 800px;']
+  div[id="map" style='width: 800px; height: 400px;']
+
+javascript:
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers( #{raw @hash.to_json});
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
