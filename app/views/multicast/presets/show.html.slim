@@ -1,0 +1,62 @@
+.page-header
+  = link_to multicast_presets_path, class: 'btn btn-default' do 
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  = link_to edit_multicast_preset_path(@multicast_preset), class: 'btn btn-primary' do 
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1
+    | Show multicast_preset
+dl.dl-horizontal
+  dt
+    | Description:
+  dd
+    = @multicast_preset.description
+  dt
+    | From:
+  dd
+    = @multicast_preset.from
+  dt
+    | From name:
+  dd
+    = @multicast_preset.from_name
+  dt
+    | Reply to:
+  dd
+    = @multicast_preset.reply_to
+  dt
+    | Preview to:
+  dd
+    = @multicast_preset.preview_to
+  dt
+    | Subject:
+  dd
+    = @multicast_preset.subject
+  dt
+    | Body template:
+  dd
+    = @multicast_preset.body_template
+  dt
+    | With attachment:
+  dd
+    = @multicast_preset.with_attachment
+  dt
+    | Attachment template:
+  dd
+    = @multicast_preset.attachment_template
+  dt
+    | Pdf convertion:
+  dd
+    = @multicast_preset.pdf_convertion
+  dt
+    | Pdf with password:
+  dd
+    = @multicast_preset.pdf_with_password
+  dt
+    | Pdf password template:
+  dd
+    = @multicast_preset.pdf_password_template
+  dt
+    | Cost centre:
+  dd
+    = @multicast_preset.cost_centre

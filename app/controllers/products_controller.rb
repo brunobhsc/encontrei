@@ -5,7 +5,14 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @ransack = Product.ransack(params[:q])
-    @products = @ransack.result
+    @products = @ransack.result.includes(:store)
+
+    @stores = @products.map(&:store).flatten.uniq
+
+    @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
+      marker.lat store.latitude
+      marker.lng store.longitude
+    end
   end
 
   # GET /products/1
@@ -70,6 +77,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :quantity, :category_id)
+      params.require(:product).permit(:name, :description, :quantity, :category_id, :store_id)
     end
 end

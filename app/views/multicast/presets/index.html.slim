@@ -1,0 +1,75 @@
+.page-header
+  = link_to new_multicast_preset_path, class: 'btn btn-primary' do 
+    span.glyphicon.glyphicon-plus
+    |  New Preset
+  h1
+    | Listing multicast_presets
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Description
+        th
+          | From
+        th
+          | From name
+        th
+          | Reply to
+        th
+          | Preview to
+        th
+          | Subject
+        th
+          | Body template
+        th
+          | With attachment
+        th
+          | Attachment template
+        th
+          | Pdf convertion
+        th
+          | Pdf with password
+        th
+          | Pdf password template
+        th
+          | Cost centre
+        th
+        th
+        th
+    tbody
+      - @multicast_presets.each do | multicast_preset |
+        tr
+          td
+            = multicast_preset.description
+          td
+            = multicast_preset.from
+          td
+            = multicast_preset.from_name
+          td
+            = multicast_preset.reply_to
+          td
+            = multicast_preset.preview_to
+          td
+            = multicast_preset.subject
+          td
+            = multicast_preset.body_template
+          td
+            = multicast_preset.with_attachment
+          td
+            = multicast_preset.attachment_template
+          td
+            = multicast_preset.pdf_convertion
+          td
+            = multicast_preset.pdf_with_password
+          td
+            = multicast_preset.pdf_password_template
+          td
+            = multicast_preset.cost_centre
+          td
+            = link_to 'Show', multicast_preset
+          td
+            = link_to 'Edit', edit_multicast_preset_path(multicast_preset) 
+          td
+            = link_to 'Destroy', multicast_preset, method: :delete, data: { confirm: 'Are you sure?' } 

@@ -1,0 +1,2 @@
+module Multicast::PresetsHelper
+end

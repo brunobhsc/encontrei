@@ -1,0 +1,67 @@
+= form_for(@multicast_preset, html: { class: "form-horizontal", role: "form" }) do |f|
+  - if @multicast_preset.errors.any?
+    .alert.alert-danger.alert-dismissable role="alert"
+      button.close type="button" data-dismiss="alert"
+        span aria-hidden="true"
+          | &times;
+        span.sr-only
+          | Close
+      h4= "#{pluralize(@multicast_preset.errors.count,"error")} prohibited this multicast_preset from being saved:"
+      ul
+        - @multicast_preset.errors.full_messages.each do |msg|
+          li= msg
+  .form-group
+    = f.label :description, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :description, class: "form-control"
+  .form-group
+    = f.label :from, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :from, class: "form-control"
+  .form-group
+    = f.label :from_name, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :from_name, class: "form-control"
+  .form-group
+    = f.label :reply_to, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :reply_to, class: "form-control"
+  .form-group
+    = f.label :preview_to, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :preview_to, class: "form-control"
+  .form-group
+    = f.label :subject, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :subject, class: "form-control"
+  .form-group
+    = f.label :body_template, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :body_template, class: "form-control"
+  .form-group
+    = f.label :with_attachment, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.check_box :with_attachment, class: "form-control"
+  .form-group
+    = f.label :attachment_template, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :attachment_template, class: "form-control"
+  .form-group
+    = f.label :pdf_convertion, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.check_box :pdf_convertion, class: "form-control"
+  .form-group
+    = f.label :pdf_with_password, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.check_box :pdf_with_password, class: "form-control"
+  .form-group
+    = f.label :pdf_password_template, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :pdf_password_template, class: "form-control"
+  .form-group
+    = f.label :cost_centre, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :cost_centre, class: "form-control"
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: "btn btn-primary"

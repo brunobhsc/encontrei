@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807140955) do
+ActiveRecord::Schema.define(version: 20170814114505) do
+
+  create_table "multicast_presets", force: :cascade do |t|
+    t.string   "description"
+    t.string   "from"
+    t.string   "from_name"
+    t.string   "reply_to"
+    t.string   "preview_to"
+    t.string   "subject"
+    t.integer  "body_template_id"
+    t.boolean  "with_attachment"
+    t.integer  "attachment_template_id"
+    t.boolean  "pdf_convertion"
+    t.boolean  "pdf_with_password"
+    t.string   "pdf_password_template"
+    t.integer  "cost_centre_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["attachment_template_id"], name: "index_multicast_presets_on_attachment_template_id"
+    t.index ["body_template_id"], name: "index_multicast_presets_on_body_template_id"
+    t.index ["cost_centre_id"], name: "index_multicast_presets_on_cost_centre_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170807140955) do
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "store_id"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
