@@ -10,8 +10,8 @@ class ProductsController < ApplicationController
     @stores = @products.map(&:store).flatten.uniq
 
     @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
-      marker.lat store.latitude
-      marker.lng store.longitude
+      marker.lat store&.latitude
+      marker.lng store&.longitude
     end
   end
 

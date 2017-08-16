@@ -6,7 +6,6 @@ class CreateStores < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :email
       t.string :site
-      t.belongs_to :tipo, foreign_key: true, inde: true
 
       t.timestamps
     end
