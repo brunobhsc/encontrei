@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'gmaps4rails'
 gem 'geocoder'
+
+gem 'devise'
 #Views
 gem 'slim'
 gem 'slim-rails'
