@@ -14,6 +14,16 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+
+    /<!-- bootstrap scripts -->
+    link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"]
+    script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"]
+
+    /<!-- gmap scripts -->
+    script[src="//maps.google.com/maps/api/js?key=AIzaSyAwPss_nXA0XRgKEHI_T3K_ix_ZqUMytw4"]
+    script[src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"]
+    script[src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript']
+
   body
     nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
       .container
@@ -24,8 +34,11 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          = link_to "Project name", "#", class: "navbar-brand"
+          = link_to "Encontrei!", products_path, class: "navbar-brand"
         #navbar.collapse.navbar-collapse
+          - if user_signed_in?
+            p.navbar-text.navbar-right 
+              = "Login atual: #{current_user.email}"
           ul.nav.navbar-nav
             li.active
               a href="#"
@@ -36,6 +49,25 @@ html
             li
               a href="#contact"
                 | Contact
+            
+            - if !user_signed_in?
+              li
+                = link_to "Sign In", new_user_session_path
+              li
+                = link_to "Sign Up", new_user_registration_path
+            - if user_signed_in?
+              - if current_user.store
+                li
+                  = link_to "Minha Loja", edit_store_path(current_user.store.id)
+              - else
+                li
+                  = link_to "Criar Loja", new_store_path
+              li
+                = link_to "Meus Produtos", new_product_path
+              li
+                = link_to "Sign Out", destroy_user_session_path, method: :delete
+              
+              
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

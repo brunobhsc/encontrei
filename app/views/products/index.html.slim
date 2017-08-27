@@ -6,9 +6,7 @@ css:
 
 .col-md-12
   .page-header
-    h1.text-center Encontrei!
-
-    h3.text-center Encontre aqui a loja física mais perto de você.
+    h3.text-center Economize tempo e dinheiro encontrando aqui a loja física mais perto de você.
 
   .panel.panel-default
     .panel-body
@@ -31,12 +29,9 @@ css:
       tr
         th Loja
         th Endereço
-        th Nome
+        th Produto
         th Descrição
-        th
-        th
-        th
-
+        th Tags
     tbody
       - @products.each do |product|
         tr
@@ -44,9 +39,11 @@ css:
           td = product&.store&.address
           td = product&.name
           td = product&.description
+          td = product&.tags.pluck(:name)
           /td = link_to 'Show', product
           /td = link_to 'Edit', edit_product_path(product)
           /td = link_to 'Destroy', product, data: { confirm: 'Are you sure?' }, method: :delete
+  = paginate @products, :theme => 'twitter-bootstrap-3'
 
 / = link_to 'New Product', new_product_path
 

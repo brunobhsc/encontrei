@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   # GET /products
   # GET /products.json
   def index
     @ransack = Product.ransack(params[:q])
-    @products = @ransack.result.includes(:store)
+    @products = @ransack.result.includes(:store).page(params[:page] || 1).per(5)
 
     @stores = @products.map(&:store).flatten.uniq
 
@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = current_user.products.build
+    @product = Product.new
   end
 
   # GET /products/1/edit
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = current_user.products.build(product_params)
+    @product = Product.new(product_params.merge(store_id: current_user.store.id))
 
     respond_to do |format|
       if @product.save

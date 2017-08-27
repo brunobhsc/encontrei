@@ -39,6 +39,8 @@ gem 'slim'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap-generators'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 # Utilities, uploads, conversions
 gem 'ransack', github: 'activerecord-hackery/ransack'
