@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170827171946) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "store_id"
-    t.integer  "user_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -65,8 +64,12 @@ ActiveRecord::Schema.define(version: 20170827171946) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
